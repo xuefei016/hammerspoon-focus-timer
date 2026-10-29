@@ -1,0 +1,13 @@
+# runtime state written by Hammerspoon (lives in ~/.hammerspoon, ignore if you keep configs in git)
+focus-stats.json
+focus-settings.json
+focus-list-overrides.json
+focus-lists-merged.json
+init.lua.bak-*
+
+# your own audio files
+sounds/*.mp3
+sounds/*.wav
+sounds/*.m4a
+
+.DS_Store
