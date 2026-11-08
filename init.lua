@@ -1070,7 +1070,9 @@ local function enterWork(manual)
     playSound("manualWork")
     hs.alert.show("💻 手动开始工作")
   else
-    hs.alert.show("💻 休息结束，准备工作")
+    -- 休息结束 → 工作: 一定要有声音(否则不知道何时该开始, 2026-10-29 用户要求)
+    playSound("autoWork")
+    hs.alert.show("💻 该开始工作了（休息结束）", 5)
   end
 
   saveStats()
@@ -1162,8 +1164,8 @@ local function tick()
 
     if running and pendingAutoWork then
       pendingAutoWork = false
-      playSound("autoWork")
-      hs.alert.show("💻 进入工作状态")
+      -- 声音已经在休息结束时响过了, 这里只补视觉确认, 不重复吵
+      hs.alert.show("💻 已进入工作状态（开始计时）", 3)
     end
 
     if running then

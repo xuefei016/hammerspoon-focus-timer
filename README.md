@@ -19,6 +19,7 @@ Built and used daily on macOS 26/27. Chinese comments in the source; this README
 - **Whitelist / blacklist aware** — apps matched by bundle id (with name fallback), websites matched by domain with longest-match precedence (so `google.com` can be blacklisted while `mail.google.com` stays whitelisted).
 - **Settle delay** — switching apps does not pause/start instantly; the new classification must hold for `settleSeconds` (default 60) before it takes effect. A quick glance at WeChat won't break your session.
 - **Idle detection** — no keyboard/mouse input for `idleSeconds` (default 180) pauses the clock.
+- **Audible cue at every transition** — the end of a break always plays the “start working” sound (even if you're not on a whitelisted app yet), and the break sounds are configurable.
 - **Extend when you're not done** — `⏰ 延长时间` adds 5/10/15 min, or pulls you back out of a break and continues working.
 - **Manual classification** — `🏷 归类当前前台目标…` opens a small panel: whitelist / blacklist. Manual-only, no nagging notifications.
 - **Daily statistics** — effective work / real break / paused time and completed pomodoros today and for the last 7 days, persisted to disk.
@@ -118,6 +119,7 @@ lua test.lua        # 38 checks: precedence, longest-match, settle delay, long-b
 
 - 菜单栏一个计时器：**只有前台是你白名单里的 App / 网站时才计时**，黑名单和未知目标暂停，切个微信不会被立刻打断（默认要离开 60 秒才算数）。
 - 番茄节奏（工作/短休/长休/每几个长休）和延长时长都能在菜单 `⏱ 番茄节奏` 里点选，不用改代码。
+- 休息结束一定会响一声（提示音可换），不会让你错过“该开始工作了”。
 - 想归类当前 App 或网站：菜单 `🏷 归类当前前台目标…`，只有手动触发，不会弹通知打扰。菜单栏出现 `❓` 就代表当前这个目标还没归类。
 - 当天归的可以在 `🏷 我归的类` 里逐条撤销；隔天的会自动沉淀成永久名单，覆盖文件不会越滚越长。
 - 统计写在 `~/.hammerspoon/focus-stats.json`，菜单里能看今日和最近 7 天。
